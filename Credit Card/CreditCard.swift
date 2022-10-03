@@ -16,6 +16,7 @@ struct CreditCard<Content>: View where Content: View {
 }
 
 struct CreditCardFront: View {
+    var cardNumber: String
     let name: String
     let expires: String
     
@@ -33,8 +34,8 @@ struct CreditCardFront: View {
             }
             Spacer()
             
-            Text("**** **** **** 2964")
-                .font(.system(size: 32))
+            Text(cardNumber)
+                .font(.system(size: 28))
                 .foregroundColor(.white)
             
             Spacer()
@@ -47,7 +48,7 @@ struct CreditCardFront: View {
                         .foregroundColor(.black)
                     
                     Text(name)
-                        .font(.caption)
+                        .font(.footnote)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
@@ -61,7 +62,7 @@ struct CreditCardFront: View {
                         .foregroundColor(.black)
                     
                     Text(expires)
-                        .font(.caption)
+                        .font(.footnote)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
@@ -70,7 +71,7 @@ struct CreditCardFront: View {
         }
                 .frame(width: 300, height: 200)
                 .padding()
-                .background(LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.brown]), startPoint: .leading, endPoint: .trailing))
+                .background(LinearGradient(gradient: Gradient(colors: [Color.gray, Color.yellow, Color.orange, Color.brown]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(10)
     }
 }
@@ -102,6 +103,6 @@ struct CreditCardBack: View {
 
 struct CreditCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreditCard<CreditCardFront>(content: { CreditCardFront(name: "ÖNCÜ CAN", expires: "04/08") })
+        CreditCard<CreditCardFront>(content: { CreditCardFront(cardNumber: "**** **** **** 2964", name: "ÖNCÜ CAN", expires: "04/08")})
     }
 }
